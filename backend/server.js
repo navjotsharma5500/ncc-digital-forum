@@ -6,20 +6,7 @@ require('dotenv').config();
 const app = express();
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
-const allowedOrigins = [
-  'http://localhost:3000',
-  process.env.CLIENT_URL,
-].filter(Boolean);
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors());
 app.use(express.json());
 
 // ─── MONGODB ──────────────────────────────────────────────────────────────────
