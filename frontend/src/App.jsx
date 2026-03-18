@@ -346,7 +346,7 @@ function MainPage({ data, update, isAdmin, onAdminLogin, onCategoryClick, onAlum
           <a href="https://www.linkedin.com/in/navjot-sharma-0bb7143b1" target="_blank" rel="noopener noreferrer"
             style={{ color: "#ffd700", fontWeight: 700, textDecoration: "none", borderBottom: "1px solid #ffd70060" }}>Navjot Sharma 🔗</a>
           &nbsp;|&nbsp;
-          <a href="#" onClick={e => { e.preventDefault(); onAdminLogin(); }} style={{ color: "#aad4ff", textDecoration: "none" }}>Admin Panel</a>
+          <button onClick={onAdminLogin} style={{ color: "#aad4ff", textDecoration: "none", background: "none", border: "none", cursor: "pointer", fontSize: "inherit" }}>Admin Panel</button>
         </p>
       </footer>
 
@@ -618,7 +618,7 @@ function AlbumView({ album, onBack, isAdmin, onUpdate, onDelete }) {
         ) : <p style={{ color: "#666", marginBottom: 24 }}>{album.desc}</p>}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 16 }}>
           {album.images.map((img, i) => (
-            <img key={i} src={img} alt={`Photo ${i+1}`} style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", borderRadius: 10, boxShadow: "0 2px 12px rgba(0,0,0,0.12)" }}
+            <img key={i} src={img} alt={`Gallery item ${i+1}`} style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", borderRadius: 10, boxShadow: "0 2px 12px rgba(0,0,0,0.12)" }}
               onError={e => e.target.src="https://placehold.co/300x200/1a1a6e/white?text=Photo"} />
           ))}
         </div>
