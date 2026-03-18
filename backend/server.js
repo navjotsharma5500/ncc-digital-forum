@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI)
 // Returns { success: true } on match, { success: false } on mismatch.
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
-  const correct = process.env.ADMIN_PASSWORD || 'ncc@admin2024';
+  const correct = process.env.ADMIN_PASSWORD;
   if (password === correct) {
     res.json({ success: true });
   } else {
