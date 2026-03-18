@@ -20,13 +20,17 @@ mongoose.connect(process.env.MONGODB_URI)
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
   const correct = process.env.ADMIN_PASSWORD;
+  console.log('ENV PASSWORD:', correct);
+  console.log('ENTERED PASSWORD:', password);
+  if (!correct) {
+    return res.status(500).json({ success: false, message: 'Server misconfigured' });
+  }
   if (password === correct) {
     res.json({ success: true });
   } else {
     res.status(401).json({ success: false, message: 'Incorrect password' });
   }
 });
-
 // ─── API ROUTES ───────────────────────────────────────────────────────────────
 app.use('/api/stats',         require('./routes/stats'));
 app.use('/api/content',       require('./routes/content'));
